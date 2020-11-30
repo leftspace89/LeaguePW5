@@ -9,6 +9,7 @@ using System.Net.Security;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace LeaguePW5
 {
@@ -23,6 +24,10 @@ namespace LeaguePW5
         public int process_id { get; set; }
         public string baseURL => string.Format("{0}://{1}:{2}", this.protocol, this.address, this.port);
         public LCU()
+        {
+            LoadLCU();
+        }
+        public void LoadLCU()
         {
             Process[] process = Process.GetProcessesByName("LeagueClientUx");
             if (process.Length != 0)
@@ -61,6 +66,20 @@ namespace LeaguePW5
             set
             {
             }
+        }
+
+        public async Task<HttpResponseMessage> PostData(string url, ByteArrayContent content)
+        {
+   
+            try
+            {
+                return await http_client.PostAsync(url, content);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("LCU Failed Restart Please");
+            }
+            return null;
         }
 
 

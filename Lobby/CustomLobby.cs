@@ -7,6 +7,19 @@ using System.Threading.Tasks;
 
 namespace LeaguePW5.Lobby
 {
+    public partial class CustomBot
+    {
+        [JsonProperty("botDifficulty")]
+        public string BotDifficulty { get; set; }
+
+        [JsonProperty("championId")]
+        public long ChampionId { get; set; }
+
+        [JsonProperty("teamId")]
+        public string TeamId { get; set; }
+    }
+
+
     public class Mutators
     {
 

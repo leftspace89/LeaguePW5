@@ -10,3 +10,4 @@ C:\Users\ZwRaidMode\source\repos\LeaguePW5\LeaguePW5\obj\Debug\LeaguePW5.csproj.
 C:\Users\ZwRaidMode\source\repos\LeaguePW5\LeaguePW5\obj\Debug\LeaguePW5.csproj.CopyComplete
 C:\Users\ZwRaidMode\source\repos\LeaguePW5\LeaguePW5\obj\Debug\LeaguePW5.exe
 C:\Users\ZwRaidMode\source\repos\LeaguePW5\LeaguePW5\obj\Debug\LeaguePW5.pdb
+C:\Users\ZwRaidMode\source\repos\LeaguePW5\LeaguePW5\obj\Debug\LeaguePW5.csproj.CoreCompileInputs.cache
