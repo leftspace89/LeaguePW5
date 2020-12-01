@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Net.Security;
@@ -29,6 +30,17 @@ namespace LeaguePW5
         }
         public void LoadLCU()
         {
+            System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+            System.Net.ServicePointManager.ServerCertificateValidationCallback += delegate (
+            object sender,
+            X509Certificate cert,
+            X509Chain chain,
+        SslPolicyErrors sslPolicyErrors)
+            {
+               
+                return true;
+            };
+
             Process[] process = Process.GetProcessesByName("LeagueClientUx");
             if (process.Length != 0)
             {
@@ -47,14 +59,18 @@ namespace LeaguePW5
                 this.protocol = parameters[4];
 
             }
+
+            
         }
         public HttpClient http_client
         {
             get
             {
                 HttpClientHandler httpClientHandler = new HttpClientHandler();
-                httpClientHandler.ClientCertificateOptions = ClientCertificateOption.Manual;
-                httpClientHandler.ServerCertificateCustomValidationCallback = ((HttpRequestMessage httpRequestMessage, X509Certificate2 cert, X509Chain cetChain, SslPolicyErrors policyErrors) => true);
+                //httpClientHandler.ClientCertificateOptions = ClientCertificateOption.Manual;
+                //httpClientHandler.ServerCertificateCustomValidationCallback = ((HttpRequestMessage httpRequestMessage, X509Certificate2 cert, X509Chain cetChain, SslPolicyErrors policyErrors) => true);
+
+
                 return new HttpClient(httpClientHandler)
                 {
                     DefaultRequestHeaders =
@@ -77,7 +93,8 @@ namespace LeaguePW5
             }
             catch (Exception ex)
             {
-                MessageBox.Show("LCU Failed Restart Please");
+                throw;
+                //MessageBox.Show("LCU Failed Restart Please");
             }
             return null;
         }
