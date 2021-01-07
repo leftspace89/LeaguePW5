@@ -36,15 +36,15 @@ namespace LeaguePW5
                 Trundle = 48
 
             }
-           public enum CompType
+            public enum CompType
             {
                 FULLCC,
                 FULLADC,
                 FULLTANK,
                 FULLMAGIC
-           };
-           public static Champions[] FULLCC =
-           {
+            };
+            public static Champions[] FULLCC =
+            {
                 Champions.Morgana,
                 Champions.Lux,
                 Champions.Leona,
@@ -54,13 +54,13 @@ namespace LeaguePW5
                 Champions.Trundle
             };
 
-           static Random rnd = new Random();
+            static Random rnd = new Random();
 
             static HashSet<int> activeChampions = new HashSet<int>();
 
-           public static Champions GetBotCompByType(CompType type)
+            public static Champions GetBotCompByType(CompType type)
             {
-             
+
 
                 switch (type)
                 {
@@ -86,7 +86,7 @@ namespace LeaguePW5
             Process.Start("https://memoryhackers.org/members/leftspace.8/");
         }
 
-        
+
         //lol-summoner/v1/current-summoner/icon
         private async void createLobby_Click(object sender, EventArgs e)
         {
@@ -110,7 +110,7 @@ namespace LeaguePW5
                 }
             };
 
-            
+
             var status = await lcu.PostData(lcu.baseURL + "/lol-lobby/v2/lobby", new ByteArrayContent(Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(lobby)))).ConfigureAwait(true);
 
         }
@@ -123,21 +123,21 @@ namespace LeaguePW5
             {
 
                 var botId = BotComps.FULLCC[i]; //TEMPPPPPP
-           
+
                 var customBot = new CustomBot()
                 {
                     BotDifficulty = selectedbotDifficulty,
-                    ChampionId =  (long)botId,
+                    ChampionId = (long)botId,
                     TeamId = "200"
                 };
-         
+
 
                 var status = await lcu.PostData(lcu.baseURL + "/lol-lobby/v1/lobby/custom/bots", new ByteArrayContent(Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(customBot)))).ConfigureAwait(true);
 
                 await Task.Delay(300);
             }
-          
-         
+
+
         }
 
         private void LeaguePW5_Load(object sender, EventArgs e)

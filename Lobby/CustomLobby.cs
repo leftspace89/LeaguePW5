@@ -74,6 +74,6 @@ namespace LeaguePW5.Lobby
         [JsonProperty("isCustom")]
         public bool isCustom { get; set; }
 
-      
+
     }
 }
